@@ -6,7 +6,7 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 19:17:20 by makpolat          #+#    #+#             */
-/*   Updated: 2025/01/30 12:12:08 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/01/31 18:32:27 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,30 +31,32 @@ int repeatcheck(int *ptr)
     }
     return 0;
 }
-int intcheck(int *ptr)
-{
-    int i;
+// int intcheck(int *ptr)
+// {
+//     int i;
 
-    i = 0;
-    while (ptr[i])
-    {
-        if ((ptr[i] >= 2147483647) && (ptr[i] <= -2147483648)) //max integer ve min integerın arasında mı durumu
-        {
-            return (1);
-        }
-        i++;
-    }
-}
-
+//     i = 0;
+//     while (ptr[i])
+//     {
+//         printf("Burada ptr:%d\n",ptr[i]);
+//         if (ptr[i] > 2147483647 || ptr[i] < -2147483648) //max int min int kontrolü
+//         {
+//             printf("OLLEEEEYY11\n");
+//             return (1);
+//         }
+            
+//         i++;
+//     }
+// }
 int *sayidonustur(int argc, char *argv[])
 {
     int *ptr;
     int i;
-    int array[10];
+
     ptr =(int *)malloc(sizeof(int) * argc);
-    i = 1;
+    i = 0;
     argc = 0;
-    while (argv[i])
+    while (argv[++i])
     {
         while (argv[i][argc])
         {
@@ -65,16 +67,11 @@ int *sayidonustur(int argc, char *argv[])
             }
             argc++;
         }
-        argc = 0;       
-        ptr[i - 1] = ft_atoi(argv[i]);
-        i++;
+        argc = 0;
+        ptr[i - 1] = ft_atoi(argv[i], ptr); //sayıya dönüştürme işlemi
     }
-    if (repeatcheck(ptr) == 1)
+    if (repeatcheck(ptr) == 1) // aynı sayıdan başka var mı fonksiyonu
         return (NULL);
-    if (intcheck(ptr) == 1)
-    {
-        return (NULL);
-    }
     return (ptr);
 }
 
@@ -85,7 +82,7 @@ char *pushswap(int argc, char *argv[])
 
     ptr = sayidonustur(argc, argv);
     if (ptr == NULL)
-        return ("Error\n");
+        return ("Aynı sayı tekrar edemez\n");
     i = 0;
     while (ptr[i])
     {

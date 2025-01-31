@@ -6,7 +6,7 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 12:46:11 by makpolat          #+#    #+#             */
-/*   Updated: 2025/01/27 10:22:39 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/01/31 18:27:27 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 static int	countwords(const char *s, char c)
 {
-	int	i;
 	int	count;
 
-	i = 0;
 	if (!*s)
 		return (0);
 	count = 0;

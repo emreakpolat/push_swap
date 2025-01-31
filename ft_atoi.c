@@ -6,36 +6,41 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 16:34:19 by makpolat          #+#    #+#             */
-/*   Updated: 2025/01/27 10:22:48 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/01/31 18:36:48 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-int	ft_atoi(const char *str)
+int	ft_atoi(const char *str, int *ptr)
 {
-	char	*ptr;
-	int		i;
-	int		k;
-	int		a;
+	long	k;
+	int		sign;
 
-	ptr = (char *)str;
-	i = 0;
 	k = 0;
-	a = 1;
-	while (ptr[i] == ' ' || (ptr[i] >= '\t' && ptr[i] <= '\r'))
-		i++;
-	if (ptr[i] == '-')
+	sign = 1;
+	while (*str == ' ' || (*str >= '\t' && *str <= '\r'))
+		str++;
+	if (*str == '-' || *str == '+')
 	{
-		a = -1;
-		i++;
+		if (*str == '-')
+			sign = -1;
+		str++;
 	}
-	else if (ptr[i] == '+')
-		i++;
-	while (ft_isdigit(ptr[i]) == 1)
+	while (ft_isdigit(*str) == 1)
 	{
-		k = k * 10 + (ptr[i] - 48);
-		i++;
+		k = k * 10 + (*str - 48);
+		str++;
+		if ((k > 2147483647) || (k < -2147483648))
+		{
+			free(ptr);
+			error("Sayı sınırların dışındaydı\n");
+		}
 	}
-	return (a * k);
+	return (sign * k);
+}
+void error(char *message)
+{
+	write(1, message, ft_strlen(message));
+	exit(EXIT_FAILURE);
 }

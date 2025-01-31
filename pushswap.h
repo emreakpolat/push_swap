@@ -6,7 +6,7 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 10:20:43 by makpolat          #+#    #+#             */
-/*   Updated: 2025/01/27 13:20:48 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/01/31 18:20:32 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct n{
     struct n *next;
 }node;
 
-int	ft_atoi(const char *str);
+int	ft_atoi(const char *str, int *ptr);
 int	ft_isdigit(int c);
 char	*ft_strdup(const char *s1);
 char	**ft_split(char const *s, char c);
