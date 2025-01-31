@@ -6,7 +6,7 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 16:34:19 by makpolat          #+#    #+#             */
-/*   Updated: 2025/01/31 18:36:48 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/01/31 18:56:15 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ int	ft_atoi(const char *str, int *ptr)
 	{
 		k = k * 10 + (*str - 48);
 		str++;
-		if ((k > 2147483647) || (k < -2147483648))
+		if ((k > 2147483647) || (k < -2147483648)) 
 		{
 			free(ptr);
-			error("Sayı sınırların dışındaydı\n");
+			error("Sayı sınırların dışındaydı\n"); // Error'a girerse exit ile çıkar ve program sonlanır
 		}
 	}
 	return (sign * k);
