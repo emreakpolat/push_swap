@@ -6,13 +6,9 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:55:15 by makpolat          #+#    #+#             */
-/*   Updated: 2025/01/28 12:56:34 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/02/05 12:10:24 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-node *ll_push(int argc, char *argv[])
-{
-    
-}

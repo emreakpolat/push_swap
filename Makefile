@@ -1,4 +1,4 @@
-NAME = pushswap.a
+NAME = pushswap
 
 CC = gcc
 
@@ -11,15 +11,16 @@ SRC = pushswap.c \
 	ft_split.c \
 	ft_isdigit.c \
 	ft_atoi.c \
+	ft_strcmp.c \
 
-OBJS = $(SRC:.c=.o)
+
 
 LIBC = ar rc
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(LIBC) $(NAME) $(OBJS)
+$(NAME): $(SRC)
+	cc -o $(NAME) $(CFLAGS) $(SRC) 
 
 clean: 
 	$(RM) $(OBJS)

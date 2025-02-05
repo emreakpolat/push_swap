@@ -6,13 +6,13 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 16:34:19 by makpolat          #+#    #+#             */
-/*   Updated: 2025/01/31 18:56:15 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/02/04 19:49:25 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-int	ft_atoi(const char *str, int *ptr)
+int	ft_atoi(const char *str, int *root)
 {
 	long	k;
 	int		sign;
@@ -33,8 +33,8 @@ int	ft_atoi(const char *str, int *ptr)
 		str++;
 		if ((k > 2147483647) || (k < -2147483648)) 
 		{
-			free(ptr);
-			error("Sayı sınırların dışındaydı\n"); // Error'a girerse exit ile çıkar ve program sonlanır
+			free(root);
+			error("Sayi sinirlarin disindaydi\n"); // Error'a girerse exit ile çıkar ve program sonlanır
 		}
 	}
 	return (sign * k);
