@@ -6,13 +6,13 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 16:34:19 by makpolat          #+#    #+#             */
-/*   Updated: 2025/02/04 19:49:25 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/02/05 15:22:57 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-int	ft_atoi(const char *str, int *root)
+int	ft_atoi(const char *str)
 {
 	long	k;
 	int		sign;
@@ -32,10 +32,7 @@ int	ft_atoi(const char *str, int *root)
 		k = k * 10 + (*str - 48);
 		str++;
 		if ((k > 2147483647) || (k < -2147483648)) 
-		{
-			free(root);
 			error("Sayi sinirlarin disindaydi\n"); // Error'a girerse exit ile çıkar ve program sonlanır
-		}
 	}
 	return (sign * k);
 }

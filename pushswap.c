@@ -6,23 +6,23 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 19:17:20 by makpolat          #+#    #+#             */
-/*   Updated: 2025/02/05 12:17:34 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/02/05 15:26:26 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void tekrarcheck(int *ptr)  // aynı sayıdan başka var mı kontrolü
+void tekrarcheck(t_list **stack_a)  // aynı sayıdan başka var mı kontrolü
 {
 	int i = 0;
 	int k = 0;
 
-	while (ptr[i])
+	while (stack_a[i]->next != NULL)
 	{
 		k = i + 1;
-		while (ptr[k])
+		while (stack_a[k]->next != NULL)
 		{
-			if (ptr[k] == ptr[i])
+			if (stack_a[i]->data == stack_a[k]->data)
 				error("ayni sayidan birden cok kez bulundu\n");
 			k++;
 		}
@@ -48,29 +48,31 @@ void	sayicheck(char *seperate[]) // girilen değerlerin arasında sayı yok ise 
 	}
 }
 
-int *sayidonustur(int argc, char *seperate[])    // karakterleri sayıya dönüştürme fonksiyonu
+t_list **sayidonustur(int argc, char *seperate[])    // karakterleri sayıya dönüştürme fonksiyonu
 {
 	int i;
-	int *ptr;
+	t_list **stack_a;
 
-	ptr = (int *)malloc(sizeof(int) * argc);
-	if (ptr == NULL)
+	stack_a = (t_list **)malloc(sizeof(t_list) * argc);
+	if (stack_a == NULL)
 		error("malloc oluşmadi\n");
 	i = 0;
 	while (seperate[i])
 	{
-		ptr[i] = ft_atoi(seperate[i], ptr);
+		stack_a[i] = (t_list *)malloc(sizeof(t_list));
+		stack_a[i]->data = ft_atoi(seperate[i]);
+		stack_a[i]->next = NULL;
 		i++;
 	}
-	tekrarcheck(ptr);
-	return (ptr);
+	tekrarcheck(stack_a);
+	return (stack_a);
 }
 
 
 void seperate(int argc, char *argv[])   // tırnak içinde gelen argümanları ayırma fonksyionu
 {
 	char **seperate;
-	int *ptr;
+	t_list **stack_a;
 	size_t i;
 
 	i = 0;
@@ -83,11 +85,11 @@ void seperate(int argc, char *argv[])   // tırnak içinde gelen argümanları a
 	while(seperate[argc])
 		argc++;
 	sayicheck(seperate);
-	ptr = sayidonustur(argc, seperate);
+	stack_a = sayidonustur(argc, seperate);
 	i = 0;
-	while(seperate[i])
+	while(stack_a[i]->next != NULL)
 	{
-		printf("%d \n",ptr[i]);
+		printf("%d \n",stack_a[i]->data);
 		i++;
 	}
 }
@@ -110,29 +112,31 @@ void	sayikontrol2(char *argv[])	// argümanlar normal olarak verilirse sayı dı
 		i++;
 	}
 }
-int	*changesayi(int argc, char *argv[])	// eğer argümanlar normal olarak verilirse
+t_list	**changesayi(int argc, char *argv[])	// eğer argümanlar normal olarak verilirse int e dönüştürme işlemi
 {
 	int i;
-	int *ptr;
+	t_list **stack_a;
 
-	ptr = (int *)malloc(sizeof(int) * argc);
-	if (ptr == NULL)
+	stack_a = (t_list **)malloc(sizeof(t_list) * argc);
+	if (stack_a == NULL)
 		error("malloc oluşmadi\n");
 	i = 0;
 	while (argv[i + 1])
 	{
-		ptr[i] = ft_atoi(argv[i + 1], ptr);
+		stack_a[i] = (t_list *)malloc(sizeof(t_list));
+		stack_a[i]->data = ft_atoi(argv[i + 1]);
+		stack_a[i]->next = NULL;
 		i++;
 	}
-	tekrarcheck(ptr);
+	tekrarcheck(stack_a);
 	sayikontrol2(argv);
-	return (ptr);
+	return (stack_a);
 }
 
 
 int main(int argc, char *argv[])
 {
-	int *deneme;
+	t_list **deneme;
 	int i = 0;
 	if (argc == 2)	// argümanlar çift tırnak içerisinde geldiyse
 	{
@@ -145,7 +149,7 @@ int main(int argc, char *argv[])
 		deneme = changesayi(argc,argv);
 		while (i < (argc -1))
 		{
-			printf("%d\n",deneme[i]);
+			printf("%d\n",deneme[i]->data);
 			i++;
 		}
 	}
