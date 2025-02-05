@@ -6,13 +6,13 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 16:34:19 by makpolat          #+#    #+#             */
-/*   Updated: 2025/02/05 16:04:07 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/02/05 19:03:13 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-int	ft_atoi(const char *str, int *ptr, char *seperate[])
+int	ft_atoi(const char *str, int *ptr, char **seperate)
 {
 	long	k;
 	int		sign;
