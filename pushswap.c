@@ -6,21 +6,21 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 19:17:20 by makpolat          #+#    #+#             */
-/*   Updated: 2025/02/05 16:28:47 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/02/05 18:50:19 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void tekrarcheck(int *ptr)  // aynı sayıdan başka var mı kontrolü
+void tekrarcheck(int *ptr, int len)  // aynı sayıdan başka var mı kontrolü
 {
 	int i = 0;
 	int k = 0;
 
-	while (ptr[i])
+	while (i < len)
 	{
 		k = i + 1;
-		while (ptr[k])
+		while (k < len)
 		{
 			if (ptr[k] == ptr[i])
 			{
@@ -45,7 +45,7 @@ void	sayicheck(char *seperate[]) // girilen değerlerin arasında sayı yok ise 
 		{
 			if (ft_isdigit(seperate[i][k]) == 0)
 			{
-				free_all(seperate);	
+				free_all(seperate);
 				error("Bu bir sayi değildir.\n");
 			}
 			k++;
@@ -68,7 +68,7 @@ int *sayidonustur(int argc, char *seperate[])    // karakterleri sayıya dönü�
 		ptr[i] = ft_atoi(seperate[i], ptr, seperate);
 		i++;
 	}
-	tekrarcheck(ptr);
+	tekrarcheck(ptr, i);
 	return (ptr);
 }
 
@@ -135,10 +135,11 @@ int	*changesayi(int argc, char *argv[])	// eğer argümanlar normal olarak veril
 		ptr[i] = ft_atoi(argv[i + 1], ptr, NULL);
 		i++;
 	}
-	tekrarcheck(ptr);
+	tekrarcheck(ptr, i);
 	sayikontrol2(argv, ptr);
 	return (ptr);
 }
+
 void	kontroller(int argc, char *argv[])
 {
 	int *deneme;
@@ -149,13 +150,15 @@ void	kontroller(int argc, char *argv[])
 	{
 		seperate(argc, argv);
 	}
-	deneme = changesayi(argc,argv);
-	while (i < (argc -1))
+	else
 	{
-		printf("%d\n",deneme[i]);
-		i++;
+		deneme = changesayi(argc,argv);
+		while (i < (argc -1))
+		{
+			printf("%d\n",deneme[i]);
+			i++;
+		}
 	}
-	free(deneme);
 }
 
 int main(int argc, char *argv[])

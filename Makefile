@@ -2,7 +2,7 @@ NAME = pushswap
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 SRC = pushswap.c \
 	ft_strlen.c \
@@ -20,7 +20,7 @@ LIBC = ar rc
 all: $(NAME)
 
 $(NAME): $(SRC)
-	cc -o $(NAME) $(CFLAGS) $(SRC) 
+	cc   -o$(NAME) $(CFLAGS) $(SRC) 
 
 clean: 
 	$(RM) $(OBJS)
