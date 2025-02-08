@@ -6,7 +6,7 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 10:20:43 by makpolat          #+#    #+#             */
-/*   Updated: 2025/02/05 16:04:40 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/02/08 13:34:14 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,12 @@ char *pushswap(int argc, char *argv[]);
 void error(char *message);
 int ft_strcmp(const char *str1, const char *str2);
 char	**free_all(char **s);
+int	*changesayi(int argc, char *argv[]);
+void	sayikontrol2(char *argv[], int *ptr);
+void seperate(int argc, char *argv[]);
+int *sayidonustur(int argc, char *seperate[]);
+void	sayicheck(char *seperate[]);
+void tekrarcheck(int *ptr, int len);
+void	kontroller(int argc, char *argv[]);
+
 #endif

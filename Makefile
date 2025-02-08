@@ -12,6 +12,7 @@ SRC = pushswap.c \
 	ft_isdigit.c \
 	ft_atoi.c \
 	ft_strcmp.c \
+	control.c 
 
 
 
