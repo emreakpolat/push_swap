@@ -14,9 +14,10 @@ SRC = pushswap.c \
 	ft_strcmp.c \
 	control.c \
 	addlist.c \
-	ft_atoilst.c
+	ft_atoilst.c \
+	hamleler.c
 
-	
+
 
 LIBC = ar rc
 

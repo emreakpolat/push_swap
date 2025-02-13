@@ -6,7 +6,7 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 10:20:43 by makpolat          #+#    #+#             */
-/*   Updated: 2025/02/13 17:04:12 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/02/13 18:22:31 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,12 @@ void	sayicheck(char *seperate[]);
 void tekrarcheck(int *ptr, int len, char *seperate[]);
 void	control(int argc, char *argv[]);
 
-// t_list addlistchar(int argc, char **argv);
+
+
 int	ft_atoilst(const char *str);
 t_general *addlist(int argc, char **argv);
 t_list	*ft_lstlast(t_list *lst);
-void	ft_lstadd_back(t_general **stack, t_list *new);
+void	ft_lstadd_back(t_general *stack, t_list *new);
 t_list	*ft_lstnew(t_general *stack, int data);
 
 #endif

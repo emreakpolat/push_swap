@@ -6,7 +6,7 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 13:31:05 by makpolat          #+#    #+#             */
-/*   Updated: 2025/02/13 13:31:33 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/02/13 17:27:57 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ int *sayidonustur(int argc, char *seperate[])    // karakterleri sayıya dönü�
 	}
 	tekrarcheck(ptr, i, seperate);
 	return (ptr);
+
 }
 
 
@@ -94,6 +95,7 @@ void seperate(int argc, char *argv[])   // tırnak içinde gelen argümanları a
 	ptr = sayidonustur(argc, seperate);
 	free(ptr);
 	free_all(seperate);
+
 }
 
 void	sayikontrol2(char *argv[], int *ptr)	// argümanlar normal olarak verilirse sayı dışında bir şey var mı bakmak için
