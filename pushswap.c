@@ -6,7 +6,7 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 19:17:20 by makpolat          #+#    #+#             */
-/*   Updated: 2025/02/13 13:05:40 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/02/13 17:12:28 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,13 @@
 
 int main(int argc, char *argv[])
 {
-	kontroller(argc, argv);
+	control(argc, argv);
+	t_general *stack = addlist(argc, argv);
+	printf("burada\n");
+	while (stack->a)
+	{
+		printf("%d\n",stack->a->data);
+		stack->a = stack->a->next;
+	}
+	
 }

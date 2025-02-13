@@ -12,9 +12,11 @@ SRC = pushswap.c \
 	ft_isdigit.c \
 	ft_atoi.c \
 	ft_strcmp.c \
-	control.c 
+	control.c \
+	addlist.c \
+	ft_atoilst.c
 
-
+	
 
 LIBC = ar rc
 

@@ -1,0 +1,83 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   addlist.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/27 12:55:15 by makpolat          #+#    #+#             */
+/*   Updated: 2025/02/13 17:19:14 by makpolat         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "pushswap.h"
+
+t_list	*ft_lstnew(t_general *stack, int data)
+{
+	t_list	*node;
+
+	node = (t_list *)malloc(sizeof(t_list));
+	if (!node)
+		return (NULL);
+	node->data = data;
+    if (stack->a == NULL)
+    {
+        stack->a = node;
+    }
+    else
+    {
+        
+        ft_lstadd_back(stack, node);
+    }
+    
+	node->next = NULL;
+	return (stack->a);
+}
+
+t_general *addlist(int argc, char **argv)
+{
+    int i;
+    char **seperate;
+    t_general *stack;
+    t_general *root;
+
+    stack =(t_general *)malloc(sizeof(t_general));
+    i = 0;
+    stack->a = NULL;
+    root = NULL;
+    if(argc == 2)
+    {
+        
+        seperate = ft_split(argv[1], ' ');
+        while(seperate[i])
+        {
+            stack->a = ft_lstnew(stack, ft_atoilst(seperate[i]));
+            printf("liste değer: %d\n",stack->a->data);
+            i++;
+        }
+    }
+    return (stack);
+}
+
+t_list	*ft_lstlast(t_list *lst)
+{
+	if (lst == NULL)
+		return (NULL);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
+}
+
+
+void	ft_lstadd_back(t_general *stack, t_list *new)
+{
+	if (!new || !stack)
+		return ;
+	if (stack == NULL)
+	{
+		stack = new;
+		new->next = NULL;
+	}
+	else
+		ft_lstlast(stack)->next = new;
+}

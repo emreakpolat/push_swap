@@ -6,7 +6,7 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 13:31:05 by makpolat          #+#    #+#             */
-/*   Updated: 2025/02/13 13:27:32 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/02/13 13:31:33 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,12 +92,6 @@ void seperate(int argc, char *argv[])   // tırnak içinde gelen argümanları a
 		argc++;
 	sayicheck(seperate);
 	ptr = sayidonustur(argc, seperate);
-	i = 0;
-	while(seperate[i])
-	{
-		printf("%d \n",ptr[i]);
-		i++;
-	}
 	free(ptr);
 	free_all(seperate);
 }
@@ -144,7 +138,7 @@ void	changesayi(int argc, char *argv[])	// eğer argümanlar normal olarak veril
 
 }
 
-void	kontroller(int argc, char *argv[])
+void	control(int argc, char *argv[])
 {
 	if(argc == 1)	// hiç bir argüman girilmediyse
 		exit(0);
