@@ -6,11 +6,12 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 16:34:19 by makpolat          #+#    #+#             */
-/*   Updated: 2025/02/07 12:52:39 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/02/13 12:25:02 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
+
 void maxcheck(long k, char *seperate[], int *ptr, int sign)
 {
 	k = (sign * k);
@@ -20,6 +21,12 @@ void maxcheck(long k, char *seperate[], int *ptr, int sign)
 		free(ptr);
 		error("Sayi sinirlarin disindaydi\n"); // Error'a girerse exit ile çıkar ve program sonlanır
 	}
+}
+void signerror(int *ptr, char **seperate)
+{
+	free(ptr);
+	free_all(seperate);
+	error("işaret girme\n");
 }
 int	ft_atoi(const char *str, int *ptr, char **seperate)
 {
@@ -37,7 +44,8 @@ int	ft_atoi(const char *str, int *ptr, char **seperate)
 		str++;
 	}
 	if (*str == 0)
-		error("bos isaret gimeee\n");
+		signerror(ptr, seperate);
+		
 	while (ft_isdigit(*str) == 1)
 	{
 		k = k * 10 + (*str - 48);
@@ -46,6 +54,7 @@ int	ft_atoi(const char *str, int *ptr, char **seperate)
 	}
 	return (sign * k);
 }
+
 void error(char *message)
 {
 	write(1, message, ft_strlen(message));

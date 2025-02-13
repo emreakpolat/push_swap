@@ -6,14 +6,14 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 13:31:05 by makpolat          #+#    #+#             */
-/*   Updated: 2025/02/08 13:31:14 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/02/13 13:27:32 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "pushswap.h"
 
-void tekrarcheck(int *ptr, int len)  // aynı sayıdan başka var mı kontrolü
+void tekrarcheck(int *ptr, int len, char *seperate[])  // aynı sayıdan başka var mı kontrolü
 {
 	int i = 0;
 	int k = 0;
@@ -26,6 +26,7 @@ void tekrarcheck(int *ptr, int len)  // aynı sayıdan başka var mı kontrolü
 			if (ptr[k] == ptr[i])
 			{
 				free(ptr);
+				free_all(seperate);
 				error("ayni sayidan birden cok kez bulundu\n");
 			}
 			k++;
@@ -69,7 +70,7 @@ int *sayidonustur(int argc, char *seperate[])    // karakterleri sayıya dönü�
 		ptr[i] = ft_atoi(seperate[i], ptr, seperate);
 		i++;
 	}
-	tekrarcheck(ptr, i);
+	tekrarcheck(ptr, i, seperate);
 	return (ptr);
 }
 
@@ -100,6 +101,7 @@ void seperate(int argc, char *argv[])   // tırnak içinde gelen argümanları a
 	free(ptr);
 	free_all(seperate);
 }
+
 void	sayikontrol2(char *argv[], int *ptr)	// argümanlar normal olarak verilirse sayı dışında bir şey var mı bakmak için
 {
 	int i;
@@ -122,11 +124,11 @@ void	sayikontrol2(char *argv[], int *ptr)	// argümanlar normal olarak verilirse
 		i++;
 	}
 }
-int	*changesayi(int argc, char *argv[])	// eğer argümanlar normal olarak verilirse
+
+void	changesayi(int argc, char *argv[])	// eğer argümanlar normal olarak verilirse
 {
 	int i;
 	int *ptr;
-
 	ptr = (int *)malloc(sizeof(int) * argc);
 	if (ptr == NULL)
 		error("malloc oluşmadi\n");
@@ -136,7 +138,20 @@ int	*changesayi(int argc, char *argv[])	// eğer argümanlar normal olarak veril
 		ptr[i] = ft_atoi(argv[i + 1], ptr, NULL);
 		i++;
 	}
-	tekrarcheck(ptr, i);
+	tekrarcheck(ptr, i, NULL);
 	sayikontrol2(argv, ptr);
-	return (ptr);
+	free(ptr);
+
+}
+
+void	kontroller(int argc, char *argv[])
+{
+	if(argc == 1)	// hiç bir argüman girilmediyse
+		exit(0);
+	else if (argc == 2)	// argümanlar çift tırnak içerisinde geldiyse
+	{
+		seperate(argc, argv);
+	}
+	else
+		changesayi(argc, argv);
 }

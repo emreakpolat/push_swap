@@ -6,7 +6,7 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 10:20:43 by makpolat          #+#    #+#             */
-/*   Updated: 2025/02/08 13:34:14 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/02/13 11:51:17 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,17 @@
 #include <stdio.h>
 #include <unistd.h>
 
-typedef struct n{
-    int data;
-    struct n *next;
-}t_list;
+// typedef struct node{
+//     int data;
+//     struct node *next;
+// }t_list;
+
+// typedef struct t_list{
+    
+//     t_list *a;
+//     t_list *b;
+
+// };
 
 
 int	ft_atoi(const char *str, int *ptr, char *seperate[]);
@@ -33,12 +40,12 @@ char *pushswap(int argc, char *argv[]);
 void error(char *message);
 int ft_strcmp(const char *str1, const char *str2);
 char	**free_all(char **s);
-int	*changesayi(int argc, char *argv[]);
+void changesayi(int argc, char *argv[]);
 void	sayikontrol2(char *argv[], int *ptr);
 void seperate(int argc, char *argv[]);
 int *sayidonustur(int argc, char *seperate[]);
 void	sayicheck(char *seperate[]);
-void tekrarcheck(int *ptr, int len);
+void tekrarcheck(int *ptr, int len, char *seperate[]);
 void	kontroller(int argc, char *argv[]);
 
 #endif
