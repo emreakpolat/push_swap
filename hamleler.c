@@ -33,7 +33,7 @@ void ft_pa(t_general *stack)
 {
     if (!stack->b)
         return;
-
+    
     ft_lstadd_front(&stack->a, ft_listcreate(stack->b->data));
     stack->b = stack->b->next;
 }

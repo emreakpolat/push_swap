@@ -6,7 +6,7 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 19:17:20 by makpolat          #+#    #+#             */
-/*   Updated: 2025/02/19 19:04:01 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/02/19 19:17:35 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,6 @@ void freelist(t_general *stack)
 	{
 		temp = stack->a;
 		stack->a = stack->a->next;
-		free(temp);
-	}
-
-	while (stack->b)
-	{
-		temp = stack->b;
-		stack->b = stack->b->next;
 		free(temp);
 	}
 	free(stack);
@@ -48,8 +41,10 @@ int main(int argc, char *argv[])
 	t_general *stack;
 
 	control(argc, argv);
-	stack = NULL;
+
 	stack = addlist(argc, argv);
+
+
 	operator(stack, "pb");
 	operator(stack, "pb");
 	operator(stack, "pb");
@@ -62,5 +57,6 @@ int main(int argc, char *argv[])
 	printf("------\n");
 	printf("B\n");
 	print(stack->b);
-	freelist(stack);
+	freelist(stack->a);
+	freelist(stack->b);
 }
