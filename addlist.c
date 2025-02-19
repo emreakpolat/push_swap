@@ -6,7 +6,7 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:55:15 by makpolat          #+#    #+#             */
-/*   Updated: 2025/02/17 20:09:41 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/02/19 18:50:57 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ t_general *addlist(int argc, char **argv)
             stack->a = ft_lstnew(stack, ft_atoilst(seperate[i]));
             i++;
         }
+        free_all(seperate);
     }
     else
     {
@@ -103,5 +104,4 @@ void	ft_lstadd_front(t_list **stack, t_list *new)
 	new->next = *stack;
 	*stack = new;
 }
-
 
