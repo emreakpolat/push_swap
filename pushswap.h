@@ -6,7 +6,7 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 10:20:43 by makpolat          #+#    #+#             */
-/*   Updated: 2025/02/13 18:22:31 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/02/17 19:47:12 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,11 @@ t_general *addlist(int argc, char **argv);
 t_list	*ft_lstlast(t_list *lst);
 void	ft_lstadd_back(t_general *stack, t_list *new);
 t_list	*ft_lstnew(t_general *stack, int data);
+void	ft_lstadd_front(t_list **stack, t_list *new);
+t_list	*ft_listcreate(int data);
+
+
+void operator(t_general *stack, char *str);
+void    ft_sa(t_general *stack);
 
 #endif

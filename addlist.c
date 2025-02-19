@@ -6,11 +6,24 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:55:15 by makpolat          #+#    #+#             */
-/*   Updated: 2025/02/13 18:26:22 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/02/17 20:09:41 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
+
+
+t_list	*ft_listcreate(int data)
+{
+	t_list	*node;
+
+	node = (t_list *)malloc(sizeof(t_list));
+	if (!node)
+		return (NULL);
+	node->data = data;
+    node->next = NULL;
+    return(node);
+}
 
 t_list	*ft_lstnew(t_general *stack, int data)
 {
@@ -39,7 +52,7 @@ t_general *addlist(int argc, char **argv)
     char **seperate;
     t_general *stack;
 
-    stack =  malloc(sizeof(t_general));
+    stack = malloc(sizeof(t_general));
     i = 0;
     stack->a = NULL;
     if(argc == 2)
@@ -81,3 +94,14 @@ void	ft_lstadd_back(t_general *stack, t_list *new)
 	else
 		ft_lstlast(stack->a)->next = new;
 }
+
+void	ft_lstadd_front(t_list **stack, t_list *new)
+{
+	if (!new)
+        return ;
+
+	new->next = *stack;
+	*stack = new;
+}
+
+
