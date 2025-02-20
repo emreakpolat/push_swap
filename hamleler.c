@@ -24,18 +24,23 @@ void ft_sb(t_general *stack)
 }
 void ft_pb(t_general *stack)
 {
+    t_list *temp;
     if (stack->a == NULL)
         return;
-    ft_lstadd_front(&stack->b, ft_listcreate(stack->a->data));
+    temp = stack->a;
+    ft_lstadd_front(&stack->b,ft_listcreate(stack->a->data));
     stack->a = stack->a->next;
+    free(temp);
 }
 void ft_pa(t_general *stack)
 {
+    t_list *temp;
     if (!stack->b)
         return;
-    
+    temp = stack->b;
     ft_lstadd_front(&stack->a, ft_listcreate(stack->b->data));
     stack->b = stack->b->next;
+    free(temp);
 }
 void ft_ra(t_list *stack)
 {

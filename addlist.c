@@ -6,7 +6,7 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:55:15 by makpolat          #+#    #+#             */
-/*   Updated: 2025/02/19 19:12:26 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/02/20 11:52:04 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,7 @@ t_list *ft_lstnew(t_general *stack, int data)
     {
         ft_lstadd_back(stack, node);
     }
-    
     node->next = NULL;
-    free(node);
     return (stack->a);
 }
 
@@ -55,6 +53,7 @@ t_general *addlist(int argc, char **argv)
     stack = malloc(sizeof(t_general));
     i = 0;
     stack->a = NULL;
+    stack->b = NULL;
     if (argc == 2)
     {
         seperate = ft_split(argv[1], ' ');
@@ -70,6 +69,7 @@ t_general *addlist(int argc, char **argv)
         while (argv[++i])
             stack->a = ft_lstnew(stack, ft_atoilst(argv[i]));
     }
+
     return (stack);
 }
 
