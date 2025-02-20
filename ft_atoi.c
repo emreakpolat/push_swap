@@ -6,28 +6,30 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 16:34:19 by makpolat          #+#    #+#             */
-/*   Updated: 2025/02/13 12:25:02 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/02/20 17:40:02 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void maxcheck(long k, char *seperate[], int *ptr, int sign)
+void	maxcheck(long k, char *seperate[], int *ptr, int sign)
 {
 	k = (sign * k);
 	if ((k > 2147483647) || (k < -2147483648))
 	{
 		free_all(seperate);
 		free(ptr);
-		error("Sayi sinirlarin disindaydi\n"); // Error'a girerse exit ile çıkar ve program sonlanır
+		error("Error\n");
 	}
 }
-void signerror(int *ptr, char **seperate)
+
+void	signerror(int *ptr, char **seperate)
 {
 	free(ptr);
 	free_all(seperate);
-	error("işaret girme\n");
+	error("Error\n");
 }
+
 int	ft_atoi(const char *str, int *ptr, char **seperate)
 {
 	long	k;
@@ -37,7 +39,7 @@ int	ft_atoi(const char *str, int *ptr, char **seperate)
 	sign = 1;
 	while (*str == ' ' || (*str >= '\t' && *str <= '\r'))
 		str++;
-	if (*str == '-' || *str == '+') 
+	if (*str == '-' || *str == '+')
 	{
 		if (*str == '-')
 			sign = -1;
@@ -45,7 +47,6 @@ int	ft_atoi(const char *str, int *ptr, char **seperate)
 	}
 	if (*str == 0)
 		signerror(ptr, seperate);
-		
 	while (ft_isdigit(*str) == 1)
 	{
 		k = k * 10 + (*str - 48);
@@ -55,7 +56,7 @@ int	ft_atoi(const char *str, int *ptr, char **seperate)
 	return (sign * k);
 }
 
-void error(char *message)
+void	error(char *message)
 {
 	write(1, message, ft_strlen(message));
 	exit(EXIT_FAILURE);

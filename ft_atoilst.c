@@ -6,7 +6,7 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 15:36:20 by makpolat          #+#    #+#             */
-/*   Updated: 2025/02/13 15:36:30 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/02/20 17:39:03 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_atoilst(const char *str)
 	sign = 1;
 	while (*str == ' ' || (*str >= '\t' && *str <= '\r'))
 		str++;
-	if (*str == '-' || *str == '+') 
+	if (*str == '-' || *str == '+')
 	{
 		if (*str == '-')
 			sign = -1;

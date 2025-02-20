@@ -6,7 +6,7 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 19:17:20 by makpolat          #+#    #+#             */
-/*   Updated: 2025/02/20 14:26:25 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/02/20 17:34:48 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void freelist(t_list *stack)
 {
 	t_list *temp;
-	if(!stack)
+	if (!stack)
 		return;
 	while (stack->next)
 	{
@@ -25,7 +25,6 @@ void freelist(t_list *stack)
 	}
 	free(stack);
 }
-
 
 void print(t_list *list)
 {
@@ -38,17 +37,14 @@ void print(t_list *list)
 	}
 }
 
-
 int main(int argc, char *argv[])
 {
 	t_general *stack;
 
 	control(argc, argv);
-	
+
 	stack = addlist(argc, argv);
-	
-	
-	
+
 	printf("A\n");
 	print(stack->a);
 

@@ -28,7 +28,7 @@ void ft_pb(t_general *stack)
     if (stack->a == NULL)
         return;
     temp = stack->a;
-    ft_lstadd_front(&stack->b,ft_listcreate(stack->a->data));
+    ft_lstadd_front(&stack->b, ft_listcreate(stack->a->data));
     stack->a = stack->a->next;
     free(temp);
 }
@@ -74,7 +74,7 @@ void ft_rra(t_list **stack)
 
     tmp->next = NULL;
     iter->next = *stack;
-    *stack= iter;
+    *stack = iter;
 }
 
 void operator(t_general *stack, char *str)
@@ -103,12 +103,11 @@ void operator(t_general *stack, char *str)
     }
     else if (ft_strcmp(str, "rra") == 0)
         ft_rra(&stack->a);
-    else if(ft_strcmp(str, "rrb") == 0)
+    else if (ft_strcmp(str, "rrb") == 0)
         ft_rra(&stack->b);
-    else if(ft_strcmp(str, "rrr") == 0)
+    else if (ft_strcmp(str, "rrr") == 0)
     {
         ft_rra(&stack->a);
         ft_rra(&stack->b);
     }
 }
-
