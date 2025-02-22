@@ -6,7 +6,7 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 16:34:19 by makpolat          #+#    #+#             */
-/*   Updated: 2025/02/20 17:40:02 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/02/22 18:06:36 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ int	ft_atoi(const char *str, int *ptr, char **seperate)
 			sign = -1;
 		str++;
 	}
-	if (*str == 0)
-		signerror(ptr, seperate);
 	while (ft_isdigit(*str) == 1)
 	{
+		if (*str == '-' || *str == '+')
+			signerror(ptr, seperate);
 		k = k * 10 + (*str - 48);
 		maxcheck(k, seperate, ptr, sign);
 		str++;

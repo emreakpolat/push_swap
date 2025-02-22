@@ -6,7 +6,7 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 19:17:20 by makpolat          #+#    #+#             */
-/*   Updated: 2025/02/20 18:38:56 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/02/22 17:45:37 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,10 @@ int main(int argc, char *argv[])
 	t_general *stack;
 
 	control(argc, argv);
-
 	stack = addlist(argc, argv);
+
+
+
 
 
 
