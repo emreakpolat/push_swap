@@ -6,7 +6,7 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 18:10:14 by makpolat          #+#    #+#             */
-/*   Updated: 2025/02/21 12:59:06 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/02/22 23:54:11 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,8 @@ void	ft_pb(t_general *stack)
 	if (stack->a == NULL)
 		return ;
 	temp = stack->a;
-	ft_lstadd_front(&stack->b, ft_listcreate(stack->a->data));
 	stack->a = stack->a->next;
-	free(temp);
+	ft_lstadd_front(&stack->b, temp);
 }
 
 void	ft_pa(t_general *stack)
@@ -53,7 +52,7 @@ void	ft_pa(t_general *stack)
 	if (!stack->b)
 		return ;
 	temp = stack->b;
-	ft_lstadd_front(&stack->a, ft_listcreate(stack->b->data));
+	ft_lstadd_front(&stack->a, temp);
 	stack->b = stack->b->next;
 	free(temp);
 }

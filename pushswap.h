@@ -6,7 +6,7 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 10:20:43 by makpolat          #+#    #+#             */
-/*   Updated: 2025/02/20 18:39:48 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/02/22 23:50:06 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@
 typedef struct s_list
 {
 	int				data;
+	int				index;
+	int				position;
+	int				target_pos;
+	int				cos_a;
+	int				cos_b;
+
 	struct s_list	*next;
 }	t_list;
 
@@ -63,5 +69,12 @@ void		ft_lstadd_front(t_list **stack, t_list *new);
 t_list		*ft_listcreate(int data);
 void		operator(t_general *stack, char *str);
 void		ft_sa(t_general *stack);
+
+
+
+
+void sorting(t_general *stack);
+void  twosort(t_general *stack);
+int countlist(t_list *list);
 
 #endif

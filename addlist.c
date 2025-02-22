@@ -6,7 +6,7 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:55:15 by makpolat          #+#    #+#             */
-/*   Updated: 2025/02/20 17:57:34 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/02/22 23:50:00 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_list	*ft_listcreate(int data)
 	if (!node)
 		return (NULL);
 	node->data = data;
+	node->index = 0;
 	node->next = NULL;
 	return (node);
 }
@@ -32,6 +33,7 @@ t_list	*ft_lstnew(t_general *stack, int data)
 	if (!node)
 		return (NULL);
 	node->data = data;
+	node->index = 0;
 	if (stack->a == NULL)
 	{
 		stack->a = node;
