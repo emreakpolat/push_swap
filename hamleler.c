@@ -6,7 +6,7 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 18:10:14 by makpolat          #+#    #+#             */
-/*   Updated: 2025/02/22 23:54:11 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/02/23 04:29:47 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,24 +52,28 @@ void	ft_pa(t_general *stack)
 	if (!stack->b)
 		return ;
 	temp = stack->b;
-	ft_lstadd_front(&stack->a, temp);
 	stack->b = stack->b->next;
-	free(temp);
+	ft_lstadd_front(&stack->a, temp);
 }
 
 void	ft_ra(t_list *stack)
 {
 	t_list	*iter;
 	int		tmp;
+	int		index;
 
 	iter = stack;
 	if (!stack)
 		return ;
 	tmp = iter->data;
+	index = iter->index;
 	while (iter->next)
 	{
 		iter->data = iter->next->data;
+		iter->index = iter->next->index;
 		iter = iter->next;
 	}
+
 	iter->data = tmp;
+	iter->index = index;
 }

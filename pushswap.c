@@ -6,7 +6,7 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 19:17:20 by makpolat          #+#    #+#             */
-/*   Updated: 2025/02/22 23:39:41 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/02/23 01:14:53 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ void print(t_list *list)
 	temp = list;
 	while (temp)
 	{
-		printf("%d\n", temp->data);
+		printf("değer:  %d  ", temp->data);
+		printf("index: %d\n", temp->index);
 		temp = temp->next;
 	}
 }
@@ -43,14 +44,7 @@ int main(int argc, char *argv[])
 
 	control(argc, argv);
 	stack = addlist(argc, argv);
-	//sorting(stack);
-
-	operator(stack, "pb");
-	operator(stack, "pb");
-	// operator(stack, "pb");
-	// operator(stack, "pb");
-
-
+	sorting(stack);
 
 
 

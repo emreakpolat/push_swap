@@ -6,13 +6,13 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 18:21:21 by makpolat          #+#    #+#             */
-/*   Updated: 2025/02/22 23:25:10 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/02/23 04:37:27 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-int countlist(t_list *list)
+int listsize(t_list *list)
 {
     int i;
     t_list *temp;
@@ -62,51 +62,66 @@ void threesort(t_general *stack)
     }
 }
 
-// void index(t_list *a)
-// {
-//     int     num;
-//     int     i;
-//     t_list  *iter;
+void indx(t_list *a)
+{
+    int     i;
+    t_list  *iter;
+    t_list *tmp;
 
-//     i = 1;
-//     iter = a;
-//     num = iter->data;
-//     while (iter)
-//     {
-//         if (num > iter->data)
-//         {
-//             num = iter->data;
-//             iter->index = i;
-//         }
-//         iter = iter->next;
-//     }
+    iter = a;
+    i = listsize(a);
+	while (i > 0)
+	{
+        iter = a;
+        tmp = NULL;
+		while (iter)
+		{
+			if (iter->index == 0 && (tmp == NULL || iter->data > tmp->data))
+				tmp = iter;
+			iter = iter->next;
+		}
+		if (tmp)
+			tmp->index = i;
+		i--;
+	}
+}
+void pbfunction(t_general *stack)
+{
+    int     i;
+    t_list *iter;
+    iter = stack->a;
+    i = listsize(iter);
+    while (iter)
+    {
+        if (iter->index <= (i / 2))
+        {
+            ft_pb(stack);
+        }
+        else
+        {
+            ft_ra(stack->a);
+        }
+        iter = iter->next;
+    }
     
-//     iter = a;
-//     while (iter)
-//     {
-//         if (iter->index == 1)
-//         {
-//             iter =
-//         }
-//     }
+}
+
+void bigsort(t_general *stack)
+{
+    indx(stack->a);
+    pbfunction(stack);
     
-    
-// }
-
-// void bigsort(t_general *stack)
-// {
-//     index(stack->a);
-// }
+}
 
 
-// void sorting(t_general *stack)
-// {
-//     int i;
-//     i = countlist(stack->a);
-//     if (i == 2)
-//         twosort(stack);
-//     else if (i == 3)
-//         threesort(stack);
-//     else
-//         bigsort(stack);
-// }
+void sorting(t_general *stack)
+{
+    int i;
+    i = listsize(stack->a);
+    if (i == 2)
+        twosort(stack);
+    else if (i == 3)
+        threesort(stack);
+    else
+        bigsort(stack);
+}
