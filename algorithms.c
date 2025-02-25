@@ -6,7 +6,7 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 18:21:21 by makpolat          #+#    #+#             */
-/*   Updated: 2025/02/25 18:57:48 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/02/25 20:08:25 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,14 +117,14 @@ void pb_all(t_general *stack)
         ft_pb(stack);
         write(1, "pb\n", 3);
     }
-    
+    threesort(stack);
 }
 
 void bigsort(t_general *stack)
 {
     indx(stack->a);
     pb_low_index(stack);
-    //pb_all(stack);
+    pb_all(stack)
     
 }
 
