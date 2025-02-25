@@ -6,7 +6,7 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 18:10:14 by makpolat          #+#    #+#             */
-/*   Updated: 2025/02/23 04:29:47 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/02/25 18:09:22 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ void	ft_ra(t_list *stack)
 		iter->index = iter->next->index;
 		iter = iter->next;
 	}
-
 	iter->data = tmp;
 	iter->index = index;
 }

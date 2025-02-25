@@ -6,7 +6,7 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 18:21:21 by makpolat          #+#    #+#             */
-/*   Updated: 2025/02/25 13:51:00 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/02/25 18:57:48 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,40 +85,46 @@ void indx(t_list *a)
 		i--;
 	}
 }
-void pbfunction(t_general *stack)
+void pb_low_index(t_general *stack)
 {
     int     i;
-    t_list *iter;
+    int     j;
     t_list *sort;
 
-    iter = stack->a;
-    i = listsize(iter);
-    while (iter)
+    i = listsize(stack->a);
+    j = i;
+    sort = stack->a;
+    while (sort && j > 0)
     {
-        sort = stack->a;
-        while (sort)
+        if (sort->index <= (i / 2))
         {
-            if (iter->index <= (i / 2))
-            {
-                write(1, "pb\n", 3);
-                ft_pb(stack);
-            }
-            else
-            {
-                write(1, "ra\n", 3);
-                ft_ra(stack->a);
-            }
-            sort = sort->next;
+            write(1, "pb\n", 3);
+            ft_pb(stack);
+            sort = stack->a;
         }
-        iter = iter->next;
+        else
+        {
+            write(1, "ra\n", 3);
+            ft_ra(stack->a);
+        }
+        j--;
     }
 }
-
+void pb_all(t_general *stack)
+{
+    while (listsize(stack->a) > 3)
+    {
+        ft_pb(stack);
+        write(1, "pb\n", 3);
+    }
+    
+}
 
 void bigsort(t_general *stack)
 {
     indx(stack->a);
-    pbfunction(stack);
+    pb_low_index(stack);
+    //pb_all(stack);
     
 }
 
