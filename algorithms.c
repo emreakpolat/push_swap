@@ -6,7 +6,7 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 18:21:21 by makpolat          #+#    #+#             */
-/*   Updated: 2025/02/25 20:08:25 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/02/25 21:46:33 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,12 +120,61 @@ void pb_all(t_general *stack)
     threesort(stack);
 }
 
+void    position(t_general *stack)
+{
+    int     i;
+    t_list  *temp;
+
+    temp = stack->a;
+    i = 0;
+    while (temp)
+    {
+        temp->position = i;
+        temp = temp->next;
+        i++;
+    }
+    temp = stack->b;
+    i = 0;
+    while (temp)
+    {
+        temp->position = i;
+        temp = temp->next;
+        i++;
+    }
+}
+
+void    target_position(t_list *b, t_list *a)
+{
+    int     num;
+    t_list *iter_a;
+    t_list *iter_b;
+
+    iter_b = b;
+    num = a->data;
+    while (iter_b)
+    {
+        iter_a = a;
+        while (iter_a)
+        {
+            if (iter_b->data < iter_a->data && (iter_b->data > num < iter_a->data))
+            {
+                printf("burada\n");
+                num = iter_a->data;
+                iter_b->target_pos = iter_a->position;
+            }
+            iter_a = iter_a->next;
+        }
+        iter_b = iter_b->next;
+    }
+}
+
 void bigsort(t_general *stack)
 {
     indx(stack->a);
     pb_low_index(stack);
-    pb_all(stack)
-    
+    pb_all(stack);
+    position(stack);
+    target_position(stack->b,stack->a);
 }
 
 
