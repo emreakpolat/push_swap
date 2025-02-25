@@ -6,7 +6,7 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 18:21:21 by makpolat          #+#    #+#             */
-/*   Updated: 2025/02/25 21:46:33 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/02/25 22:49:03 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,15 +150,15 @@ void    target_position(t_list *b, t_list *a)
     t_list *iter_b;
 
     iter_b = b;
-    num = a->data;
+    
     while (iter_b)
     {
+        num = a->data;
         iter_a = a;
         while (iter_a)
         {
-            if (iter_b->data < iter_a->data && (iter_b->data > num < iter_a->data))
+            if (num < iter_b->data)
             {
-                printf("burada\n");
                 num = iter_a->data;
                 iter_b->target_pos = iter_a->position;
             }

@@ -6,7 +6,7 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 10:20:43 by makpolat          #+#    #+#             */
-/*   Updated: 2025/02/22 23:50:06 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/02/25 22:57:59 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ typedef struct s_list
 	int				index;
 	int				position;
 	int				target_pos;
-	int				cos_a;
-	int				cos_b;
+	int				cost_a;
+	int				cost_b;
 
 	struct s_list	*next;
 }	t_list;
