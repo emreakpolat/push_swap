@@ -6,7 +6,7 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 18:21:21 by makpolat          #+#    #+#             */
-/*   Updated: 2025/02/23 04:37:27 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/02/25 13:51:00 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,22 +89,31 @@ void pbfunction(t_general *stack)
 {
     int     i;
     t_list *iter;
+    t_list *sort;
+
     iter = stack->a;
     i = listsize(iter);
     while (iter)
     {
-        if (iter->index <= (i / 2))
+        sort = stack->a;
+        while (sort)
         {
-            ft_pb(stack);
-        }
-        else
-        {
-            ft_ra(stack->a);
+            if (iter->index <= (i / 2))
+            {
+                write(1, "pb\n", 3);
+                ft_pb(stack);
+            }
+            else
+            {
+                write(1, "ra\n", 3);
+                ft_ra(stack->a);
+            }
+            sort = sort->next;
         }
         iter = iter->next;
     }
-    
 }
+
 
 void bigsort(t_general *stack)
 {
