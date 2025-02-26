@@ -6,7 +6,7 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 19:17:20 by makpolat          #+#    #+#             */
-/*   Updated: 2025/02/25 21:18:31 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/02/26 00:42:22 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void print(t_list *list)
 	int i = 0;
 	while (temp)
 	{
-		printf("target-position: %d  position %d  değer:  %d  ",temp->target_pos, temp->position, temp->data);
+		printf("cost_a: %d   cost_b: %d   target-position: %d  position: %d    değer: %d   ",temp->cost_a,temp->cost_b , temp->target_pos,temp->position, temp->data);
 		printf("index: %d\n", temp->index);
 		i++;
 		temp = temp->next;
