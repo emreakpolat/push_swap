@@ -6,7 +6,7 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 18:21:21 by makpolat          #+#    #+#             */
-/*   Updated: 2025/02/26 05:08:07 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/02/27 19:39:26 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,11 +152,11 @@ void    target_position(t_list *b, t_list *a)
     iter_b = b;
     while (iter_b)
     {
-        num = a->data;
+        num = 2147483647;
         iter_a = a;
         while (iter_a)
         {
-            if (num < iter_b->data)
+            if (iter_b->data < iter_a->data && num > iter_a->data)
             {
                 num = iter_a->data;
                 iter_b->target_pos = iter_a->position;
@@ -188,7 +188,7 @@ void    cost_function(t_general *stack)
     }
 }
 
-t_list    *findcheapest(t_general *stack)
+t_list  *findcheapest(t_general *stack)
 {
     int     i;
     int     j;
@@ -212,77 +212,106 @@ t_list    *findcheapest(t_general *stack)
         }
         iter = iter->next;
     }
-    return  (cheapest);
+    return (cheapest);
 }
-
-static void     rev_rotate(t_general *stack, int *cost_a, int *cost_b)
+static void	double_rev_rotate(t_general *a, int *cost_a, int *cost_b)
 {
-    while(*cost_a < 0 && 0 > *cost_b)
-    {
-        ft_rra(stack->a);
-        ft_rra(stack->b);
-        *cost_a++;
-        *cost_b++;
-    }
-}
-static void     rotate(t_general *stack, int *cost_a, int *cost_b)
-{
-    while(*cost_a > 0 && 0 < *cost_b)
-    {
-        ft_ra(stack->a);
-        ft_ra(stack->b);
-        *cost_a++;
-        *cost_b++;
-    }
-}
-static void     doublerotate(t_list *stack, int *cost_a, int *cost_b)
-{
-    while (*cost_a)
+	while (*cost_a < 0 && *cost_b < 0)
 	{
-		if (*cost_a > 0)
+		(*cost_a)++;
+		(*cost_b)++;
+        write(1, "rrr\n", 4);
+		operator(a, "rrr");
+	}
+}
+static void	double_rotate(t_general *stack, int *cost_a, int *cost_b)
+{
+	while (*cost_a > 0 && *cost_b > 0)
+	{
+		(*cost_a)--;
+		(*cost_b)--;
+		ft_ra(stack->a);
+        write(1, "ra\n", 3);
+		ft_ra(stack->b);
+        write(1, "rb\n", 3);
+
+	}
+}
+static void	rotate_a(t_general *stack, int *cost_b)
+{
+	while (*cost_b)
+	{
+		if (*cost_b > 0)
 		{
-			ft_ra(stack);
-			(*cost_a)--;
+            write(1, "ra\n", 4);
+			ft_ra(stack->a);
+			(*cost_b)--;
 		}
-		else if (*cost_a < 0)
+		else if (*cost_b < 0)
 		{
-			ft_rra(stack);
-			(*cost_a)++;
+            write(1, "rra\n", 4);
+			ft_rra(&stack->a);
+			(*cost_b)++;
 		}
 	}
 }
 
-void    push(t_general *stack, t_list *cheapest)
+static void	rotate_b(t_general *stack, int *cost_a)
 {
-    int *cost_a;
-    int *cost_b;
-
-    cost_a = cheapest->cost_a;
-    cost_b = cheapest->cost_b;
-    if (cheapest->cost_a < 0 && 0 < cheapest->cost_b)
-    {
-        //rev_rotate(stack, &cheapest->cost_a, &cheapest->cost_b);
+	while (*cost_a != 0)
+	{
+        if (*cost_a > 0)
+        {
+            write(1, "rb\n", 3);
+            ft_ra(stack->b);
+		    (*cost_a)--;
+        }
+        else if(*cost_a < 0)
+        {
+            write(1, "rr\n", 3);
+		    operator(stack, "rr");
+            (*cost_a)++;
+        }
     }
-    else if (cheapest->cost_a > 0 && 0 < cheapest->cost_b)
-    {
-        //rotate(stack, &cheapest->cost_a, &cheapest->cost_b);
-    }
-    //doublerotate(stack->a, &cheapest->cost_a, &cheapest->cost_b);
-    //doublerotate(stack->b, &cheapest->cost_a, &cheapest->cost_b);
-    ft_pa(stack);
 }
+void	move(t_general *stack, t_list *cheap)
+{
+    if (cheap->cost_a < 0 && cheap->cost_b < 0)
+    {
+        double_rev_rotate(stack, &cheap->cost_a, &cheap->cost_b);
+    }
+    else if (cheap->cost_a > 0 && cheap->cost_b > 0)
+    {
+        double_rotate(stack, &cheap->cost_a, &cheap->cost_b);
+    }
+    rotate_a(stack, &cheap->cost_a);
+    rotate_b(stack, &cheap->cost_b);
+	ft_pa(stack);
+}
+
 void bigsort(t_general *stack)
 {
-    t_list *cheapest;
-
+    t_list *cheap;
     indx(stack->a);
     pb_low_index(stack);
     pb_all(stack);
     position(stack);
     target_position(stack->b,stack->a);
     cost_function(stack);
-    cheapest = findcheapest(stack->b);
-    push(stack, cheapest);
+    cheap = findcheapest(stack);
+    while (stack->b)
+    {
+        cheap = findcheapest(stack);
+        move(stack,cheap);
+        position(stack);
+        target_position(stack->b,stack->a);
+        cost_function(stack); 
+    }
+    while (stack->a->index != 1)
+    {
+        ft_ra(stack->a);
+    }
+    
 }
 
 

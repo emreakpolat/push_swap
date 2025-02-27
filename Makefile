@@ -15,7 +15,7 @@ SRC = pushswap.c \
 	control.c \
 	addlist.c \
 	ft_atoilst.c \
-	hamleler.c \
+	movements.c \
 	pushswap_utils.c \
 	algorithms.c
 
