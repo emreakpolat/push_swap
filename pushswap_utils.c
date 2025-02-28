@@ -6,7 +6,7 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 17:48:12 by makpolat          #+#    #+#             */
-/*   Updated: 2025/02/22 22:39:51 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/02/28 17:57:30 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,6 @@ t_general	*addlist(int argc, char **argv)
 
 void	ft_rra(t_list **stack)
 {
-
-
 	t_list	*iter;
 	t_list	*tmp;
 	
@@ -107,9 +105,6 @@ void	ft_rra(t_list **stack)
 	tmp->next = NULL;
 	iter->next = *stack;
 	*stack = iter;
-	// printf("stack %d\n", iter->data);
-	// printf("stack %d\n", iter->next->data);
-	// printf("stack %d\n", iter->next->next->data);
 }
 
 void	operator(t_general *stack, char *str)
@@ -123,10 +118,6 @@ void	operator(t_general *stack, char *str)
 		ft_sa(stack);
 		ft_sa(stack);
 	}
-	else if (ft_strcmp(str, "pa") == 0)
-		ft_pa(stack);
-	else if (ft_strcmp(str, "pb") == 0)
-		ft_pb(stack);
 	else if (ft_strcmp(str, "ra") == 0)
 		ft_ra(stack->a);
 	else if (ft_strcmp(str, "rb") == 0)

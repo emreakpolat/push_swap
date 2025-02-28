@@ -6,7 +6,7 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 18:21:21 by makpolat          #+#    #+#             */
-/*   Updated: 2025/02/27 19:39:26 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/02/28 18:14:45 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,20 +69,20 @@ void indx(t_list *a)
     t_list *tmp;
 
     iter = a;
-    i = listsize(a);
-	while (i > 0)
+    i = 1;
+	while (i <= listsize(a))
 	{
         iter = a;
         tmp = NULL;
 		while (iter)
 		{
-			if (iter->index == 0 && (tmp == NULL || iter->data > tmp->data))
+			if (iter->index == 0 && (tmp == NULL || iter->data < tmp->data))
 				tmp = iter;
 			iter = iter->next;
 		}
 		if (tmp)
 			tmp->index = i;
-		i--;
+		i++;
 	}
 }
 void pb_low_index(t_general *stack)
@@ -94,7 +94,7 @@ void pb_low_index(t_general *stack)
     i = listsize(stack->a);
     j = i;
     sort = stack->a;
-    while (sort && j > 0)
+    while ((sort && (j > 0) )&& listsize(stack->a) > 3)
     {
         if (sort->index <= (i / 2))
         {
@@ -142,7 +142,7 @@ void    position(t_general *stack)
         i++;
     }
 }
-
+#include <limits.h>
 void    target_position(t_list *b, t_list *a)
 {
     int     num;
@@ -152,7 +152,7 @@ void    target_position(t_list *b, t_list *a)
     iter_b = b;
     while (iter_b)
     {
-        num = 2147483647;
+        num = INT_MAX;
         iter_a = a;
         while (iter_a)
         {
@@ -162,6 +162,22 @@ void    target_position(t_list *b, t_list *a)
                 iter_b->target_pos = iter_a->position;
             }
             iter_a = iter_a->next;
+        }
+        // Eğer iter_b için uygun bir pozisyon bulunamazsa, en küçük pozisyonu ata
+        if (num == INT_MAX)
+        {
+            iter_a = a;
+            num = iter_a->data;
+            iter_b->target_pos = iter_a->position;
+            while (iter_a)
+            {
+                if (iter_a->data < num)
+                {
+                    num = iter_a->data;
+                    iter_b->target_pos = iter_a->position;
+                }
+                iter_a = iter_a->next;
+            }
         }
         iter_b = iter_b->next;
     }
@@ -231,10 +247,8 @@ static void	double_rotate(t_general *stack, int *cost_a, int *cost_b)
 		(*cost_a)--;
 		(*cost_b)--;
 		ft_ra(stack->a);
-        write(1, "ra\n", 3);
 		ft_ra(stack->b);
-        write(1, "rb\n", 3);
-
+        write(1, "rr\n", 3);
 	}
 }
 static void	rotate_a(t_general *stack, int *cost_b)
@@ -243,7 +257,7 @@ static void	rotate_a(t_general *stack, int *cost_b)
 	{
 		if (*cost_b > 0)
 		{
-            write(1, "ra\n", 4);
+            write(1, "ra\n", 3);
 			ft_ra(stack->a);
 			(*cost_b)--;
 		}
@@ -258,7 +272,7 @@ static void	rotate_a(t_general *stack, int *cost_b)
 
 static void	rotate_b(t_general *stack, int *cost_a)
 {
-	while (*cost_a != 0)
+	while (*cost_a)
 	{
         if (*cost_a > 0)
         {
@@ -268,12 +282,13 @@ static void	rotate_b(t_general *stack, int *cost_a)
         }
         else if(*cost_a < 0)
         {
-            write(1, "rr\n", 3);
-		    operator(stack, "rr");
+            write(1, "rrb\n", 4);
+		    operator(stack, "rrb");
             (*cost_a)++;
         }
     }
 }
+
 void	move(t_general *stack, t_list *cheap)
 {
     if (cheap->cost_a < 0 && cheap->cost_b < 0)
@@ -286,6 +301,7 @@ void	move(t_general *stack, t_list *cheap)
     }
     rotate_a(stack, &cheap->cost_a);
     rotate_b(stack, &cheap->cost_b);
+    write(1, "pa\n", 3);
 	ft_pa(stack);
 }
 
@@ -298,20 +314,19 @@ void bigsort(t_general *stack)
     position(stack);
     target_position(stack->b,stack->a);
     cost_function(stack);
-    cheap = findcheapest(stack);
     while (stack->b)
     {
         cheap = findcheapest(stack);
         move(stack,cheap);
         position(stack);
         target_position(stack->b,stack->a);
-        cost_function(stack); 
+        cost_function(stack);
     }
-    while (stack->a->index != 1)
-    {
-        ft_ra(stack->a);
-    }
-    
+    // while (stack->a->index > 1)
+    // {
+    //     write(1, "rra\n", 4);
+    //     ft_rra(&stack->a);
+    // }
 }
 
 

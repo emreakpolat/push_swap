@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hamleler.c                                         :+:      :+:    :+:   */
+/*   movements.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 18:10:14 by makpolat          #+#    #+#             */
-/*   Updated: 2025/02/25 18:09:22 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/02/28 17:57:15 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,29 @@
 void	ft_sa(t_general *stack)
 {
 	int	temp;
+	int	index;
 
 	if (stack->a->next == NULL || stack->a == NULL)
 		return ;
+	index = stack->a->next->index;
 	temp = stack->a->next->data;
 	stack->a->next->data = stack->a->data;
 	stack->a->data = temp;
+	stack->a->index = index;
 }
 
 void	ft_sb(t_general *stack)
 {
 	int	temp;
+	int	index;
 
 	if (stack->b->next == NULL || stack->b == NULL)
 		return ;
+	index = stack->b->next->index;
 	temp = stack->b->next->data;
 	stack->b->next->data = stack->b->data;
 	stack->b->data = temp;
+	stack->b->index = index;
 }
 
 void	ft_pb(t_general *stack)
