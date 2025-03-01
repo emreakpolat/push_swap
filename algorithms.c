@@ -6,7 +6,7 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 18:21:21 by makpolat          #+#    #+#             */
-/*   Updated: 2025/02/28 18:14:45 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/03/01 17:50:14 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,56 +69,29 @@ void indx(t_list *a)
     t_list *tmp;
 
     iter = a;
+    while (iter)
+    {
+        iter->index = 0;
+        iter = iter->next;
+    }
     i = 1;
-	while (i <= listsize(a))
-	{
+    while (i <= listsize(a))
+    {
         iter = a;
         tmp = NULL;
-		while (iter)
-		{
-			if (iter->index == 0 && (tmp == NULL || iter->data < tmp->data))
-				tmp = iter;
-			iter = iter->next;
-		}
-		if (tmp)
-			tmp->index = i;
-		i++;
-	}
+        while (iter)
+        {
+            if (iter->index == 0 && (tmp == NULL || iter->data < tmp->data))
+                tmp = iter;
+            iter = iter->next;
+        }
+        if (tmp)
+            tmp->index = i;
+        i++;
+    }
 }
-void pb_low_index(t_general *stack)
-{
-    int     i;
-    int     j;
-    t_list *sort;
 
-    i = listsize(stack->a);
-    j = i;
-    sort = stack->a;
-    while ((sort && (j > 0) )&& listsize(stack->a) > 3)
-    {
-        if (sort->index <= (i / 2))
-        {
-            write(1, "pb\n", 3);
-            ft_pb(stack);
-            sort = stack->a;
-        }
-        else
-        {
-            write(1, "ra\n", 3);
-            ft_ra(stack->a);
-        }
-        j--;
-    }
-}
-void pb_all(t_general *stack)
-{
-    while (listsize(stack->a) > 3)
-    {
-        ft_pb(stack);
-        write(1, "pb\n", 3);
-    }
-    threesort(stack);
-}
+
 
 void    position(t_general *stack)
 {
@@ -163,7 +136,6 @@ void    target_position(t_list *b, t_list *a)
             }
             iter_a = iter_a->next;
         }
-        // Eğer iter_b için uygun bir pozisyon bulunamazsa, en küçük pozisyonu ata
         if (num == INT_MAX)
         {
             iter_a = a;
@@ -196,40 +168,14 @@ void    cost_function(t_general *stack)
     {
         temp_b->cost_b = temp_b->position;
         temp_b->cost_a = temp_b->target_pos;
-        if (temp_b->cost_b > (size_b / 2))
+        if (temp_b->position > (size_b / 2))
             temp_b->cost_b = (size_b - temp_b->position) * -1;
-        if (temp_b->cost_a > (size_a / 2))
+        if (temp_b->target_pos > (size_a / 2))
             temp_b->cost_a = (size_a - temp_b->target_pos) * -1;
         temp_b = temp_b->next;
     }
 }
 
-t_list  *findcheapest(t_general *stack)
-{
-    int     i;
-    int     j;
-    int     num;
-    t_list  *cheapest;
-    t_list  *iter;
-    
-    num = 2147483647;
-    iter = stack->b;
-    cheapest = iter;
-    while (iter)
-    {
-        if (iter->cost_a < 0)
-            i = (iter->cost_a * -1);
-        if(iter->cost_b < 0)
-            j = (iter->cost_b * -1);
-        if ((i + j) < num)
-        {
-            num = (i + j);
-            cheapest = iter;
-        }
-        iter = iter->next;
-    }
-    return (cheapest);
-}
 static void	double_rev_rotate(t_general *a, int *cost_a, int *cost_b)
 {
 	while (*cost_a < 0 && *cost_b < 0)
@@ -289,6 +235,9 @@ static void	rotate_b(t_general *stack, int *cost_a)
     }
 }
 
+
+
+
 void	move(t_general *stack, t_list *cheap)
 {
     if (cheap->cost_a < 0 && cheap->cost_b < 0)
@@ -305,28 +254,114 @@ void	move(t_general *stack, t_list *cheap)
 	ft_pa(stack);
 }
 
+void  findcheapest(t_general *stack)
+{
+    int     i;
+    int     j;
+    int     num;
+    t_list  *cheapest;
+    t_list  *iter;
+    
+    num = 2147483647;
+    iter = stack->b;
+    cheapest = iter;
+    while (iter)
+    {
+        if (iter->cost_a < 0)
+            i = (iter->cost_a * -1);
+        if(iter->cost_b < 0)
+            j = (iter->cost_b * -1);
+        if ((i + j) < num)
+        {
+            num = (i + j);
+            cheapest = iter;
+        }
+        iter = iter->next;
+    }
+    move(stack,cheapest);
+}
+void pb_all(t_general *stack)
+{
+    while (listsize(stack->a) > 3)
+    {
+        ft_pb(stack);
+        write(1 ,"pb\n", 3);
+    }
+    threesort(stack);
+}
+
+void pb_low_index(t_general *stack)
+{
+    int     i;
+    int     j;
+    t_list *sort;
+
+    i = listsize(stack->a);
+    j = i;
+    sort = stack->a;
+    while ((sort && (j > 0) )&& listsize(stack->a) > 3)
+    {
+        if (sort->index <= (i / 2))
+        {
+            write(1, "pb\n", 3);
+            ft_pb(stack);
+            sort = stack->a;
+        }
+        else
+        {
+            write(1, "ra\n", 3);
+            ft_ra(stack->a);
+        }
+        j--;
+    }
+    pb_all(stack);
+} 
 void bigsort(t_general *stack)
 {
-    t_list *cheap;
     indx(stack->a);
     pb_low_index(stack);
-    pb_all(stack);
-    position(stack);
-    target_position(stack->b,stack->a);
-    cost_function(stack);
     while (stack->b)
     {
-        cheap = findcheapest(stack);
-        move(stack,cheap);
         position(stack);
         target_position(stack->b,stack->a);
         cost_function(stack);
+        findcheapest(stack);
     }
-    // while (stack->a->index > 1)
-    // {
-    //     write(1, "rra\n", 4);
-    //     ft_rra(&stack->a);
-    // }
+
+    // En küçük index değerine sahip düğümü bul
+    t_list *temp = stack->a;
+    t_list *min_node = temp;
+    while (temp)
+    {
+        if (temp->index < min_node->index)
+            min_node = temp;
+        temp = temp->next;
+    }
+
+    // Min_node'un pozisyonunu hesapla
+    position(stack);
+    int min_pos = min_node->position;
+    int size_a = listsize(stack->a);
+
+    // En kısa rotasyonu seç
+    if (min_pos <= size_a / 2)
+    {
+        // Min düğüm üst yarıdaysa, ra kullan
+        while (stack->a->index != 1)
+        {
+            write(1, "ra\n", 3);
+            ft_ra(stack->a);
+        }
+    }
+    else
+    {
+        // Min düğüm alt yarıdaysa, rra kullan
+        while (stack->a->index != 1)
+        {
+            write(1, "rra\n", 4);
+            ft_rra(&stack->a);
+        }
+    }
 }
 
 

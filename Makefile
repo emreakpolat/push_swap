@@ -1,10 +1,10 @@
-NAME = pushswap
+NAME = push_swap
 
 CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror -g
 
-SRC = pushswap.c \
+SRC = push_swap.c \
 	ft_strlen.c \
 	ft_substr.c \
 	ft_strdup.c \
