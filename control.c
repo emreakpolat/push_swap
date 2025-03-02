@@ -6,13 +6,13 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 13:31:05 by makpolat          #+#    #+#             */
-/*   Updated: 2025/03/02 13:30:47 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/03/02 14:11:35 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-int	*push_atoi(int argc, char *seperate[])
+int	*sayidonustur(int argc, char *seperate[])
 {
 	int	i;
 	int	*ptr;
@@ -26,7 +26,7 @@ int	*push_atoi(int argc, char *seperate[])
 		ptr[i] = ft_atoi(seperate[i], ptr, seperate);
 		i++;
 	}
-	repeatcheck(ptr, i, seperate);
+	tekrarcheck(ptr, i, seperate);
 	return (ptr);
 }
 
@@ -45,13 +45,13 @@ void	seperate(int argc, char *argv[])
 	argc = 0;
 	while (seperate[argc])
 		argc++;
-	intcheck(seperate);
-	ptr = push_atoi(argc, seperate);
+	sayicheck(seperate);
+	ptr = sayidonustur(argc, seperate);
 	free(ptr);
 	free_all(seperate);
 }
 
-void	intcontrol2(char *argv[], int *ptr)
+void	sayikontrol2(char *argv[], int *ptr)
 {
 	int	i;
 	int	k;
@@ -74,7 +74,7 @@ void	intcontrol2(char *argv[], int *ptr)
 	}
 }
 
-void	changeinteger(int argc, char *argv[])
+void	changesayi(int argc, char *argv[])
 {
 	int	i;
 	int	*ptr;
@@ -88,19 +88,34 @@ void	changeinteger(int argc, char *argv[])
 		ptr[i] = ft_atoi(argv[i + 1], ptr, NULL);
 		i++;
 	}
-	repeatcheck(ptr, i, NULL);
-	intcontrol2(argv, ptr);
+	tekrarcheck(ptr, i, NULL);
+	sayikontrol2(argv, ptr);
 	free(ptr);
 }
 
 void	control(int argc, char *argv[])
 {
+	// int	i;
+	// int	j;
+	
 	if (argc == 1)
 		exit(0);
-	else if (argc == 2)
+	//i = 0;
+	// while (argv[i])
+	// {
+	// 	j = 0;
+	// 	while (argv[i][j])
+	// 	{
+	// 		if((argv[i][j] <= 48 && argv[i][j] >= 57) &&)
+	// 		{
+
+	// 		}
+	// 	}
+	// }
+	if (argc == 2)
 	{
 		seperate(argc, argv);
 	}
 	else
-		changeinteger(argc, argv);
+		changesayi(argc, argv);
 }
