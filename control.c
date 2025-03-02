@@ -6,7 +6,7 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 13:31:05 by makpolat          #+#    #+#             */
-/*   Updated: 2025/03/02 15:19:01 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/03/02 15:22:39 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,6 @@ void	changesayi(int argc, char *argv[])
 
 void	control(int argc, char *argv[])
 {
-
 	if (argc == 1)
 		exit(0);
 	if (argc == 2)
