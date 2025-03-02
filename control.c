@@ -6,13 +6,13 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 13:31:05 by makpolat          #+#    #+#             */
-/*   Updated: 2025/02/22 20:19:42 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/03/02 13:30:47 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-int	*sayidonustur(int argc, char *seperate[])
+int	*push_atoi(int argc, char *seperate[])
 {
 	int	i;
 	int	*ptr;
@@ -26,7 +26,7 @@ int	*sayidonustur(int argc, char *seperate[])
 		ptr[i] = ft_atoi(seperate[i], ptr, seperate);
 		i++;
 	}
-	tekrarcheck(ptr, i, seperate);
+	repeatcheck(ptr, i, seperate);
 	return (ptr);
 }
 
@@ -45,13 +45,13 @@ void	seperate(int argc, char *argv[])
 	argc = 0;
 	while (seperate[argc])
 		argc++;
-	sayicheck(seperate);
-	ptr = sayidonustur(argc, seperate);
+	intcheck(seperate);
+	ptr = push_atoi(argc, seperate);
 	free(ptr);
 	free_all(seperate);
 }
 
-void	sayikontrol2(char *argv[], int *ptr)
+void	intcontrol2(char *argv[], int *ptr)
 {
 	int	i;
 	int	k;
@@ -74,7 +74,7 @@ void	sayikontrol2(char *argv[], int *ptr)
 	}
 }
 
-void	changesayi(int argc, char *argv[])
+void	changeinteger(int argc, char *argv[])
 {
 	int	i;
 	int	*ptr;
@@ -88,8 +88,8 @@ void	changesayi(int argc, char *argv[])
 		ptr[i] = ft_atoi(argv[i + 1], ptr, NULL);
 		i++;
 	}
-	tekrarcheck(ptr, i, NULL);
-	sayikontrol2(argv, ptr);
+	repeatcheck(ptr, i, NULL);
+	intcontrol2(argv, ptr);
 	free(ptr);
 }
 
@@ -102,5 +102,5 @@ void	control(int argc, char *argv[])
 		seperate(argc, argv);
 	}
 	else
-		changesayi(argc, argv);
+		changeinteger(argc, argv);
 }

@@ -6,25 +6,25 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 18:21:21 by makpolat          #+#    #+#             */
-/*   Updated: 2025/03/02 12:55:35 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/03/02 13:06:06 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
- #include "pushswap.h"
+#include "pushswap.h"
 
-int listsize(t_list *list)
+int	listsize(t_list *list)
 {
-    int i;
-    t_list *temp;
+	int		i;
+	t_list	*temp;
 
-    i = 0;
-    temp = list;
-    while (temp)
-    {
-        i++;
-        temp = temp->next;
-    }
-    return (i);
+	i = 0;
+	temp = list;
+	while (temp)
+	{
+		i++;
+		temp = temp->next;
+	}
+	return (i);
 }
 
 t_list	*less_node(t_list *stack)
@@ -71,7 +71,6 @@ int	maximum_bits(t_list *stack)
 	int		maximum;
 	int		find_bits;
 
-
 	iter = stack;
 	maximum = iter->index;
 	find_bits = 0;
@@ -86,22 +85,21 @@ int	maximum_bits(t_list *stack)
 	return (find_bits);
 }
 
-void sorting(t_general *stack)
+void	sorting(t_general *stack)
 {
-    int i;
+	int	i;
 
-    i = listsize(stack->a);
-    indx(stack->a);
-
+	i = listsize(stack->a);
+	indx(stack->a);
 	if (i < 2)
 		return ;
 	if (is_sort(stack->a))
 		return ;
 	if (i == 2)
-    {
-        ft_sa(stack);
-        write(1, "sa\n", 3);
-    }
+	{
+		ft_sa(stack);
+		write(1, "sa\n", 3);
+	}
 	else if (i == 3)
 		threesort(stack);
 	else if (i == 4)
@@ -109,5 +107,5 @@ void sorting(t_general *stack)
 	else if (i == 5)
 		fivesort(stack);
 	else
-		bigsort(stack,0, 0, listsize(stack->a));
+		bigsort(stack, 0, 0, listsize(stack->a));
 }
