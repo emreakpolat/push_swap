@@ -6,7 +6,7 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 18:21:21 by makpolat          #+#    #+#             */
-/*   Updated: 2025/03/02 12:35:52 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/03/02 12:55:35 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,6 @@ int	maximum_bits(t_list *stack)
 	return (find_bits);
 }
 
-
-
 void sorting(t_general *stack)
 {
     int i;
@@ -111,6 +109,5 @@ void sorting(t_general *stack)
 	else if (i == 5)
 		fivesort(stack);
 	else
-		bigsort(stack,0,0,listsize(stack->a));
+		bigsort(stack,0, 0, listsize(stack->a));
 }
-

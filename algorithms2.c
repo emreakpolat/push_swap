@@ -6,18 +6,17 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 11:02:45 by makpolat          #+#    #+#             */
-/*   Updated: 2025/03/02 12:35:22 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/03/02 12:57:56 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void threesort(t_general *stack)
+void	threesort(t_general *stack)
 {
-	t_list *temp;
+	t_list	*temp;
 
 	temp = stack->a;
-
 	if (temp->data > temp->next->data)
 	{
 		write(1, "sa\n", 3);
@@ -37,7 +36,6 @@ void threesort(t_general *stack)
 	}
 }
 
-
 void	foursort(t_general *stack)
 {
 	if (is_sort(stack->a))
@@ -46,7 +44,6 @@ void	foursort(t_general *stack)
 	threesort(stack);
 	ft_pa(stack);
 	write(1, "pa\n", 3);
-
 }
 
 void	fivesort(t_general *stack)
@@ -57,7 +54,7 @@ void	fivesort(t_general *stack)
 	write(1, "pa\n", 3);
 }
 
-void	bigsort(t_general *stack, int i, int j, int  stack_size)
+void	bigsort(t_general *stack, int i, int j, int stack_size)
 {
 	t_list	*node;
 	int		max;
@@ -73,21 +70,13 @@ void	bigsort(t_general *stack, int i, int j, int  stack_size)
 			{
 				ft_ra(stack->a);
 				write(1, "ra\n", 3);
-
 			}
 			else
-			{
 				ft_pb(stack);
-				write(1, "pb\n", 3);
-
-			}
 			j++;
 		}
 		while (stack->b)
-		{
 			ft_pa(stack);
-			write(1, "pa\n", 3);
-		}
 		i++;
 	}
 }

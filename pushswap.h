@@ -6,7 +6,7 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 10:20:43 by makpolat          #+#    #+#             */
-/*   Updated: 2025/03/02 12:32:06 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/03/02 12:57:04 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,7 @@ void		ft_lstadd_front(t_list **stack, t_list *new);
 t_list		*ft_listcreate(int data);
 void		operator(t_general *stack, char *str);
 void		ft_sa(t_general *stack);
-
-void		bigsort(t_general *stack);
+void		bigsort(t_general *stack, int i, int j, int stack_size);
 int			maximum_bits(t_list *stack);
 void		foursort(t_general *stack);
 void		threesort(t_general *stack);
