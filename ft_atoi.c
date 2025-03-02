@@ -6,13 +6,13 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 16:34:19 by makpolat          #+#    #+#             */
-/*   Updated: 2025/03/02 15:23:45 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/03/02 15:38:05 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void	maxcheck(long k, char *seperate[], int *ptr, int sign)
+static void	maxcheck(long k, char *seperate[], int *ptr, int sign)
 {
 	k = (sign * k);
 	if ((k > 2147483647) || (k < -2147483648))
@@ -23,7 +23,7 @@ void	maxcheck(long k, char *seperate[], int *ptr, int sign)
 	}
 }
 
-void	signerror(int *ptr, char **seperate)
+static void	signerror(int *ptr, char **seperate)
 {
 	free(ptr);
 	free_all(seperate);

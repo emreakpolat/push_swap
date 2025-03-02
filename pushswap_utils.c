@@ -6,13 +6,13 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 17:48:12 by makpolat          #+#    #+#             */
-/*   Updated: 2025/03/02 13:53:33 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/03/02 15:43:53 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void	tekrarcheck(int *ptr, int len, char *seperate[])
+void	repeat_check(int *ptr, int len, char *seperate[])
 {
 	int	i;
 	int	k;
@@ -36,7 +36,7 @@ void	tekrarcheck(int *ptr, int len, char *seperate[])
 	}
 }
 
-void	sayicheck(char *seperate[])
+void	number_check(char *seperate[])
 {
 	int	i;
 	int	k;

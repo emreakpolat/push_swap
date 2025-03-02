@@ -6,13 +6,13 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 13:31:05 by makpolat          #+#    #+#             */
-/*   Updated: 2025/03/02 15:22:39 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/03/02 15:59:25 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-int	*sayidonustur(int argc, char *seperate[])
+static int	*seperate_change_int(int argc, char *seperate[])
 {
 	int	i;
 	int	*ptr;
@@ -26,11 +26,11 @@ int	*sayidonustur(int argc, char *seperate[])
 		ptr[i] = ft_atoi(seperate[i], ptr, seperate);
 		i++;
 	}
-	tekrarcheck(ptr, i, seperate);
+	repeat_check(ptr, i, seperate);
 	return (ptr);
 }
 
-void	seperate(int argc, char *argv[])
+static void	seperate(int argc, char *argv[])
 {
 	char	**seperate;
 	int		*ptr;
@@ -45,13 +45,13 @@ void	seperate(int argc, char *argv[])
 	argc = 0;
 	while (seperate[argc])
 		argc++;
-	sayicheck(seperate);
-	ptr = sayidonustur(argc, seperate);
+	number_check(seperate);
+	ptr = seperate_change_int(argc, seperate);
 	free(ptr);
 	free_all(seperate);
 }
 
-void	sayikontrol2(char *argv[], int *ptr)
+static void	number_check2(char *argv[], int *ptr)
 {
 	int	i;
 	int	k;
@@ -74,7 +74,7 @@ void	sayikontrol2(char *argv[], int *ptr)
 	}
 }
 
-void	changesayi(int argc, char *argv[])
+static void	change_number(int argc, char *argv[])
 {
 	int	i;
 	int	*ptr;
@@ -88,8 +88,8 @@ void	changesayi(int argc, char *argv[])
 		ptr[i] = ft_atoi(argv[i + 1], ptr, NULL);
 		i++;
 	}
-	tekrarcheck(ptr, i, NULL);
-	sayikontrol2(argv, ptr);
+	repeat_check(ptr, i, NULL);
+	number_check2(argv, ptr);
 	free(ptr);
 }
 
@@ -98,9 +98,7 @@ void	control(int argc, char *argv[])
 	if (argc == 1)
 		exit(0);
 	if (argc == 2)
-	{
 		seperate(argc, argv);
-	}
 	else
-		changesayi(argc, argv);
+		change_number(argc, argv);
 }

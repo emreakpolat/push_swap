@@ -6,29 +6,13 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 11:47:45 by makpolat          #+#    #+#             */
-/*   Updated: 2025/03/02 12:31:14 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/03/02 15:58:49 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-int	is_sort(t_list *stack)
-{
-	t_list	*temp;
-
-	temp = stack;
-	if (!temp || !temp->next)
-		return (1);
-	while (temp->next)
-	{
-		if (temp->data > temp->next->data)
-			return (0);
-		temp = temp->next;
-	}
-	return (1);
-}
-
-t_list	*min_node(t_list *stack)
+static t_list	*min_node(t_list *stack)
 {
 	t_list	*iter;
 	t_list	*min;
@@ -44,6 +28,22 @@ t_list	*min_node(t_list *stack)
 		iter = iter->next;
 	}
 	return (min);
+}
+
+int	is_sort(t_list *stack)
+{
+	t_list	*temp;
+
+	temp = stack;
+	if (!temp || !temp->next)
+		return (1);
+	while (temp->next)
+	{
+		if (temp->data > temp->next->data)
+			return (0);
+		temp = temp->next;
+	}
+	return (1);
 }
 
 void	position(t_general *stack)

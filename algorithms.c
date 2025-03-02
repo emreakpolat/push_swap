@@ -6,7 +6,7 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 18:21:21 by makpolat          #+#    #+#             */
-/*   Updated: 2025/03/02 14:15:24 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/03/02 15:54:37 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	listsize(t_list *list)
 	return (i);
 }
 
-t_list	*less_node(t_list *stack)
+static t_list	*less_node(t_list *stack)
 {
 	t_list	*temp;
 	t_list	*iter;
@@ -51,7 +51,7 @@ t_list	*less_node(t_list *stack)
 	return (temp);
 }
 
-void	indx(t_list *stack)
+static void	indx(t_list *stack)
 {
 	t_list	*iter;
 	int		index;

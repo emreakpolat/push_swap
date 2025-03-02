@@ -1,9 +1,18 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/03/02 15:50:40 by makpolat          #+#    #+#              #
+#    Updated: 2025/03/02 16:00:55 by makpolat         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = push_swap
-
-CC = gcc
-
-CFLAGS = -Wall -Wextra -Werror -g
-
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
 SRC = push_swap.c \
 	ft_strlen.c \
 	ft_substr.c \
@@ -11,7 +20,6 @@ SRC = push_swap.c \
 	ft_split.c \
 	ft_isdigit.c \
 	ft_atoi.c \
-	ft_strcmp.c \
 	control.c \
 	addlist.c \
 	ft_atoilst.c \
@@ -21,20 +29,18 @@ SRC = push_swap.c \
 	algorithms2.c \
 	algorithms3.c
 
-
-
 LIBC = ar rc
 
 all: $(NAME)
 
 $(NAME): $(SRC)
-	cc   -o$(NAME) $(CFLAGS) $(SRC) 
+	${CC} $(CFLAGS) -o $(NAME) $(SRC) 
 
 clean: 
 	$(RM) $(OBJS)
 
 fclean: clean
-		$(RM) $(NAME)
+	$(RM) $(NAME)
 
 re: fclean all
 
