@@ -6,7 +6,7 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 18:10:14 by makpolat          #+#    #+#             */
-/*   Updated: 2025/03/01 16:57:50 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/03/02 10:08:49 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ void	ft_sa(t_general *stack)
 	temp = stack->a->next->data;
 	stack->a->next->data = stack->a->data;
 	stack->a->data = temp;
+
+	stack->a->next->index = stack->a->index;
 	stack->a->index = index;
+
 }
 
 void	ft_sb(t_general *stack)
@@ -37,6 +40,7 @@ void	ft_sb(t_general *stack)
 	temp = stack->b->next->data;
 	stack->b->next->data = stack->b->data;
 	stack->b->data = temp;
+	stack->b->next->index = stack->b->index;
 	stack->b->index = index;
 }
 

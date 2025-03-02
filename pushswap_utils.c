@@ -6,7 +6,7 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 17:48:12 by makpolat          #+#    #+#             */
-/*   Updated: 2025/02/28 17:57:30 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/03/02 10:05:42 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,11 +91,13 @@ void	ft_rra(t_list **stack)
 {
 	t_list	*iter;
 	t_list	*tmp;
+	int index;
 	
 	if (!(*stack) || !(*stack)->next)
 		return ;
 	iter = *stack;
 	tmp = *stack;
+	index = tmp->index;
 	while (iter->next)
 		iter = iter->next;
 	
@@ -104,6 +106,7 @@ void	ft_rra(t_list **stack)
 	
 	tmp->next = NULL;
 	iter->next = *stack;
+	iter->next->index = index; 
 	*stack = iter;
 }
 
