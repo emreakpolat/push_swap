@@ -6,7 +6,7 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 10:20:43 by makpolat          #+#    #+#             */
-/*   Updated: 2025/02/25 22:57:59 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/03/02 12:32:06 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,6 @@ typedef struct s_list
 {
 	int				data;
 	int				index;
-	int				position;
-	int				target_pos;
-	int				cost_a;
-	int				cost_b;
-
 	struct s_list	*next;
 }	t_list;
 
@@ -70,11 +65,16 @@ t_list		*ft_listcreate(int data);
 void		operator(t_general *stack, char *str);
 void		ft_sa(t_general *stack);
 
-
-
-
-void sorting(t_general *stack);
-void  twosort(t_general *stack);
-int countlist(t_list *list);
+void		bigsort(t_general *stack);
+int			maximum_bits(t_list *stack);
+void		foursort(t_general *stack);
+void		threesort(t_general *stack);
+void		twosort(t_general *stack);
+void		fivesort(t_general *stack);
+int			is_sort(t_list *stack);
+t_list		*min_node(t_list *stack);
+void		position(t_general *stack);
+void		sorting(t_general *stack);
+int			listsize(t_list *list);
 
 #endif

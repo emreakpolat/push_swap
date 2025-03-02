@@ -17,7 +17,9 @@ SRC = push_swap.c \
 	ft_atoilst.c \
 	movements.c \
 	pushswap_utils.c \
-	algorithms.c
+	algorithms.c \
+	algorithms2.c \
+	algorithms3.c
 
 
 
