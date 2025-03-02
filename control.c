@@ -6,7 +6,7 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 13:31:05 by makpolat          #+#    #+#             */
-/*   Updated: 2025/03/02 14:11:35 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/03/02 15:19:01 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,23 +95,9 @@ void	changesayi(int argc, char *argv[])
 
 void	control(int argc, char *argv[])
 {
-	// int	i;
-	// int	j;
-	
+
 	if (argc == 1)
 		exit(0);
-	//i = 0;
-	// while (argv[i])
-	// {
-	// 	j = 0;
-	// 	while (argv[i][j])
-	// 	{
-	// 		if((argv[i][j] <= 48 && argv[i][j] >= 57) &&)
-	// 		{
-
-	// 		}
-	// 	}
-	// }
 	if (argc == 2)
 	{
 		seperate(argc, argv);

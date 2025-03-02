@@ -6,7 +6,7 @@
 /*   By: makpolat <makpolat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 19:17:20 by makpolat          #+#    #+#             */
-/*   Updated: 2025/03/02 14:23:54 by makpolat         ###   ########.fr       */
+/*   Updated: 2025/03/02 15:09:37 by makpolat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,3 +38,5 @@ int	main(int argc, char *argv[])
 	freelist(stack->b);
 	free(stack);
 }
+
+
